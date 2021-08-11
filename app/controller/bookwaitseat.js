@@ -71,7 +71,6 @@ exports.CreateBookwaitseat = (req, res) => {
 exports.CreateBookwaitseatTRUE = (req, res) => {
 
     const book = [{
-
         id: req.body[0].id,
         RestaurantId: req.body[0].RestaurantId,
         debut: req.body[0].debut,
@@ -96,6 +95,34 @@ exports.CreateBookwaitseatTRUE = (req, res) => {
 
         })
 }
+
+/*exports.CreateBookwaitseatTRUE = (req, res) => {
+
+    const book = {
+        id: req.body.id,
+        RestaurantId: req.body.RestaurantId,
+        debut: req.body.debut,
+        fin: req.body.fin,
+        guestName: req.body.guestName,
+        confResv: req.body.confResv,
+        cancResv: req.body.cancResv
+    }
+    console.log("book", book)
+    BookWait.create(book)
+        .then(book => {
+
+            if (book) {
+                res.status(200).json(book)
+
+            } else {
+                res.send('book dont create ')
+
+            }
+        }).catch(err => {
+            res.send('errror: ')
+
+        })
+}*/
 
 
 //UpdateConfBookWaitandSeat

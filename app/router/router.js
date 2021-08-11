@@ -31,6 +31,8 @@ module.exports = function (app) {
    const upload = require('../config/multer.config.js');
    const fileWorker = require('../controller/file.js');
    const fileWorker2 = require('../controller/fileEvent.js');
+   const evenement = require('../controller/Evenement.js');
+
    //user
    app.get('/user/FindRestoUSer/:UserId', user.findRestaurantlByIdUser);
 
@@ -72,13 +74,15 @@ module.exports = function (app) {
    app.get('/restaurants/general/:id', restaurant.findGenerals);
    app.get('/restaurants/cuisine/:id', restaurant.findCuisine);
 
-   //adress
-   /*app.post("/adresses/create", adresse.create);
-   app.get('/adresses', adresse.findAll);
-   app.get('/adresses/:id', adresse.findOne);
-   app.put('/adresses/UpdateAdresse/:id', adresse.update);
-   app.delete("/adresses/:id", adresse.delete);
-   app.delete("/adresses", adresse.deleteAll);*/
+
+
+   //evenement
+   app.post("/evenements/create", evenement.create);
+   app.get("/evenements", evenement.findAll);
+   app.get("/evenements/:id", evenement.findOne);
+   app.put("/evenements/:id", evenement.update);
+   app.delete("/evenements/:id", evenement.delete);
+   app.delete("/evenements", evenement.deleteAll);
    //cuisine
    app.post("/cuisines/create", cuisine.create);
    app.get('/cuisines', cuisine.findAll);
@@ -141,7 +145,8 @@ module.exports = function (app) {
    app.post('/users/register', auth.register);
    app.get('/users/profile', auth.profile);
 
-
+   app.get('/users/:id', user.findOne);
+   app.put('/users/update/:id', user.update);
    //turnover
    app.post('/turnvoer/createTurnover', turnover.CreateTurnover);
    app.get('/turnvoer/getturnover/:id', turnover.findRestaurantlwithTurnover);
