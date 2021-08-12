@@ -26,6 +26,26 @@ exports.findRestaurantlByIdUser = (req, res) => {
         })
 }
 
+//find Restaurant BY ID user
+exports.findBWSByIdUser = (req, res) => {
+    console.log("rrr")
+    UserId = req.params.UserId
+    console.log("eee", UserId)
+    return User.findByPk(UserId, { include: ["bookWaitSeat"] })
+        .then(user => {
+
+            if (user) {
+                res.status(200).json(user)
+
+            } else {
+                res.send('user deos not exist')
+
+            }
+        }).catch(err => {
+            res.send('errror: ' + err)
+        })
+}
+
 // Retrieve all users from the database.
 exports.findAll = (req, res) => {
     /*const nom = req.query.nom;
@@ -47,7 +67,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    User.findByPk(id, { include: ["restaurant"], model: Restaurant, where: ({ UserId: id }) })
+    User.findByPk(id, { include: ["restaurant", "bookwaitseat"], model: { Restaurant, User }, where: ({ UserId: id }) })
         .then(data => {
             res.send(data);
         })

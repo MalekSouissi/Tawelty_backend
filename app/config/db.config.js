@@ -49,7 +49,11 @@ db.bookwaitseats.belongsTo(db.restaurants, {
   foreignKey: "RestaurantId",
   as: "restaurant",
 });
-
+db.users.hasMany(db.bookwaitseats, { as: "bookwaitseat" });
+db.bookwaitseats.belongsTo(db.users, {
+  foreignKey: "UserId",
+  as: "user",
+});
 
 
 db.users.hasMany(db.restaurants, { as: "restaurant" });
