@@ -101,12 +101,16 @@ db.tables.belongsTo(db.restaurants, {
 });
 
 
-db.clients.hasMany(db.reservations, { as: "reservation" });
-db.reservations.belongsTo(db.clients, {
-  foreignKey: "ClientId",
-  as: "client",
+db.users.hasMany(db.reservations, { as: "reservation" });
+db.reservations.belongsTo(db.users, {
+  foreignKey: "UserId",
+  as: "user",
 });
-
+/*db.users.hasMany(db.restaurants, { as: "restaurant" });
+db.restaurants.belongsTo(db.users, {
+  foreignKey: "UserId",
+  as: "user",
+});*/
 
 db.restaurants.hasMany(db.reservations, { as: "reservationResto" });
 db.reservations.belongsTo(db.restaurants, {
@@ -120,11 +124,11 @@ db.reservations.belongsTo(db.tables, {
   as: "Table",
 });
 
-db.users.hasMany(db.reservations, { as: "reservationGerant" });
+/*db.users.hasMany(db.reservations, { as: "reservationGerant" });
 db.reservations.belongsTo(db.users, {
   foreignKey: "UserId",
   as: "user",
-});
+});*/
 
 
 db.restaurants.hasMany(db.Canvases, { as: "canvas" });

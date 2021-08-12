@@ -158,8 +158,6 @@ module.exports = function (app) {
    app.get('/users/restaurant/:id', restaurant.findOne1);
    //app.get('/users/reservation/:id', reservation.findOne1);
 
-   app.get('/users/:id', user.findOne);
-   app.put('/users/update/:id', user.update);
    //turnover
    app.post('/turnvoer/createTurnover', turnover.CreateTurnover);
    app.get('/turnvoer/getturnover/:id', turnover.findRestaurantlwithTurnover);
