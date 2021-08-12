@@ -59,7 +59,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Evenement.findByPk(id, { include: ["filesEvent"] })
+    Evenement.findByPk(id)
         .then(data => {
             res.send(data);
         })

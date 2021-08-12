@@ -18,6 +18,7 @@ module.exports = function (app) {
    const zone = require('../controller/zone.js');
    const turnover = require('../controller/turnover.js');
    const event = require('../controller/event.js');
+   const evenement = require('../controller/Evenement.js');
    const worker = require('../controller/worker.js');
    const salle = require('../controller/salle.js');
    const BWS = require('../controller/bookwaitseat.js');
@@ -31,7 +32,6 @@ module.exports = function (app) {
    const upload = require('../config/multer.config.js');
    const fileWorker = require('../controller/file.js');
    const fileWorker2 = require('../controller/fileEvent.js');
-   const evenement = require('../controller/Evenement.js');
 
    //user
    app.get('/user/FindRestoUSer/:UserId', user.findRestaurantlByIdUser);
@@ -73,6 +73,7 @@ module.exports = function (app) {
    app.get('/restaurants/etablissement/:id', restaurant.findEtablissement);
    app.get('/restaurants/general/:id', restaurant.findGenerals);
    app.get('/restaurants/cuisine/:id', restaurant.findCuisine);
+   app.get('/restaurants/evenement/:id', restaurant.findOne2);
 
 
 
@@ -125,7 +126,13 @@ module.exports = function (app) {
 
    app.get('/file/:id', fileWorker.downloadFile);
    app.get('/Eventfile/:id', fileWorker2.downloadFile);
-
+   //evenement
+   app.post("/evenements/create", evenement.create);
+   app.get("/evenements", evenement.findAll);
+   app.get("/evenements/:id", evenement.findOne);
+   app.put("/evenements/:id", evenement.update);
+   app.delete("/evenements/:id", evenement.delete);
+   app.delete("/evenements", evenement.deleteAll);
 
    //Reservation
    //  app.post('/reservation/AddReservation22', reservation.CreateReservation22);
@@ -144,6 +151,12 @@ module.exports = function (app) {
    app.post('/users/login', auth.login);
    app.post('/users/register', auth.register);
    app.get('/users/profile', auth.profile);
+
+   app.get('/users/:id', user.findOne);
+   app.put('/users/update/:id', user.update);
+   app.get('/users', user.findAll);
+   app.get('/users/restaurant/:id', restaurant.findOne1);
+   //app.get('/users/reservation/:id', reservation.findOne1);
 
    app.get('/users/:id', user.findOne);
    app.put('/users/update/:id', user.update);
