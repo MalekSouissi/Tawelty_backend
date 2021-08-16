@@ -67,7 +67,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    User.findByPk(id, { include: ["restaurant", "bookwaitseat"], model: { Restaurant, User }, where: ({ UserId: id }) })
+    User.findByPk(id, { include: ["restaurant"], model: { Restaurant, User }, where: ({ UserId: id }) })
         .then(data => {
             res.send(data);
         })
