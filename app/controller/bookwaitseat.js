@@ -77,7 +77,8 @@ exports.CreateBookwaitseatTRUE = (req, res) => {
         fin: req.body[0].fin,
         guestName: req.body[0].guestName,
         confResv: req.body[0].confResv,
-        cancResv: req.body[0].cancResv
+        cancResv: req.body[0].cancResv,
+        UserId: req.body[0].UserId,
     }]
     console.log("book", book)
     BookWait.bulkCreate(book)

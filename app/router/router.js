@@ -156,6 +156,7 @@ module.exports = function (app) {
    app.put('/users/update/:id', user.update);
    app.get('/users', user.findAll);
    app.get('/users/restaurant/:id', restaurant.findOne1);
+   app.get('/users/BWS/:id', user.findBWSByIdUser);
    //app.get('/users/reservation/:id', reservation.findOne1);
 
    //turnover

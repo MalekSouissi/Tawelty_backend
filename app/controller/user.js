@@ -2,6 +2,7 @@ var express = require('express');
 const cors = require("cors")
 const db = require('../config/db.config.js');
 const { restaurants } = require('../config/db.config.js');
+const BookWaitSeat = require('../models/BookWaitSeat.js');
 const User = db.users;
 const Restaurant = db.restaurants;
 
@@ -28,22 +29,17 @@ exports.findRestaurantlByIdUser = (req, res) => {
 
 //find Restaurant BY ID user
 exports.findBWSByIdUser = (req, res) => {
-    console.log("rrr")
-    UserId = req.params.UserId
-    console.log("eee", UserId)
-    return User.findByPk(UserId, { include: ["bookWaitSeat"] })
-        .then(user => {
+    const id = req.params.id;
 
-            if (user) {
-                res.status(200).json(user)
-
-            } else {
-                res.send('user deos not exist')
-
-            }
-        }).catch(err => {
-            res.send('errror: ' + err)
+    User.findByPk(id, { include: ["bookwaitseat"], where: ({ UserId: id }) })
+        .then(data => {
+            res.send(data.bookwaitseat);
         })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error retrieving bws with id=" + id
+            });
+        });
 }
 
 // Retrieve all users from the database.
