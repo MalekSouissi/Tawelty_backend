@@ -32,7 +32,7 @@ module.exports = function (app) {
    const upload = require('../config/multer.config.js');
    const fileWorker = require('../controller/file.js');
    const fileWorker2 = require('../controller/fileEvent.js');
-
+   const invoice = require('../controller/invoice.js');
    //user
    app.get('/user/FindRestoUSer/:UserId', user.findRestaurantlByIdUser);
 
@@ -121,7 +121,7 @@ module.exports = function (app) {
 
 
    app.get('/file/info', fileWorker.listAllFiles);
-   app.get('/fileEvent/info', fileWorker2.listAllFiles);
+   app.get('/fileEvent/info/:id', fileWorker2.listAllFiles);
 
 
    app.get('/file/:id', fileWorker.downloadFile);
@@ -158,6 +158,10 @@ module.exports = function (app) {
    app.get('/users/restaurant/:id', restaurant.findOne1);
    app.get('/users/BWS/:id', user.findBWSByIdUser);
    //app.get('/users/reservation/:id', reservation.findOne1);
+   //invoice
+   app.post('/invoice/create', invoice.CreateBon);
+   app.get('/invoice/:id', invoice.Bonwithclient);
+   app.get('/PrintInvoice/:id', invoice.PrintBons);
 
    //turnover
    app.post('/turnvoer/createTurnover', turnover.CreateTurnover);

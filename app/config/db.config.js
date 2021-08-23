@@ -42,6 +42,7 @@ db.tablereservations = require('../models/Tablereservations.js')(sequelize, Sequ
 db.selecttableresvs = require('../models/SelectTableResv.js')(sequelize, Sequelize);
 db.bookwaitseats = require('../models/BookWaitSeat.js')(sequelize, Sequelize);
 db.evenements = require('../models/Evenement.js')(sequelize, Sequelize);
+db.invoices = require('../models/Invoice.js')(sequelize, Sequelize);
 
 
 db.restaurants.hasMany(db.bookwaitseats, { as: "bookwaitseat" });
@@ -55,7 +56,11 @@ db.bookwaitseats.belongsTo(db.users, {
   as: "user",
 });
 
-
+db.users.hasMany(db.invoices, { as: "invoice" });
+db.invoices.belongsTo(db.users, {
+  foreignKey: "UserId",
+  as: "user",
+});
 db.users.hasMany(db.restaurants, { as: "restaurant" });
 db.restaurants.belongsTo(db.users, {
   foreignKey: "UserId",

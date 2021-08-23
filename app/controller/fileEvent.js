@@ -73,7 +73,9 @@ exports.uploadMultipleFiles = async (req, res) => {
 }
 
 exports.listAllFiles = (req, res) => {
-    File.findAll({ attributes: ['id', 'name', 'EvenementId'] }).then(files => {
+    const id = req.params.id;
+
+    File.findAll({ attributes: ['id', 'name', 'EvenementId'], where: ({ EvenementId: id }) }).then(files => {
 
         const fileInfo = [];
 
@@ -81,9 +83,10 @@ exports.listAllFiles = (req, res) => {
 
         for (let i = 0; i < files.length; i++) {
             fileInfo.push({
+                id: files[i].id,
                 filename: files[i].name,
                 EvenementId: files[i].EvenementId,
-                url: "http://localhost:3000/Eventfile/" + files[i].dataValues.id
+                url: "http://10.0.2.2:3000/Eventfile/" + files[i].dataValues.id
             })
         }
 
