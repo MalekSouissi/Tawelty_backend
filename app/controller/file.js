@@ -72,7 +72,9 @@ exports.uploadMultipleFiles = async (req, res) => {
     return res.json(messages);
 }
 exports.listAllFiles = (req, res) => {
-    File.findAll({ attributes: ['id', 'name', 'RestaurantId'] }).then(files => {
+    const id = req.params.id;
+
+    File.findAll({ attributes: ['id', 'name', 'RestaurantId'], where: ({ RestaurantId: id }) }).then(files => {
 
         const fileInfo = [];
 

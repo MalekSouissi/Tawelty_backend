@@ -20,8 +20,9 @@ exports.CreateRestaurant = (req, res) => {
         temps_fermeture: req.body.temps_ouverture,
         heureDebut: "00:00",
         heureFin: "00:00",
-
         UserId: req.body.UserId,
+        etat: req.body.etat,
+        budget: req.body.budget
     }
 
     Restaurant.create(restData)

@@ -33,6 +33,7 @@ module.exports = function (app) {
    const fileWorker = require('../controller/file.js');
    const fileWorker2 = require('../controller/fileEvent.js');
    const invoice = require('../controller/invoice.js');
+   const data = require('../controller/data.js');
    //user
    app.get('/user/FindRestoUSer/:UserId', user.findRestaurantlByIdUser);
 
@@ -120,7 +121,7 @@ module.exports = function (app) {
    app.post('/fileEvent/multiple/upload', upload.array('files', 4), fileWorker2.uploadMultipleFiles);
 
 
-   app.get('/file/info', fileWorker.listAllFiles);
+   app.get('/file/info/:id', fileWorker.listAllFiles);
    app.get('/fileEvent/info/:id', fileWorker2.listAllFiles);
 
 
@@ -196,4 +197,8 @@ module.exports = function (app) {
 
    app.get('/toleranceReservation/GetALltoleranceReservation/:id', TOL.findRestaurantlwithToleranceReservations);
    app.post('/toleranceReservation/createtoleranceReservation', TOL.CreateToleranceReservations);
+   //insert data
+
+   app.post('/data', data.CreateListRestaurant);
+
 }
