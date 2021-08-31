@@ -200,5 +200,10 @@ module.exports = function (app) {
    //insert data
 
    app.post('/data', data.CreateListRestaurant);
+   app.post('/data/etablissement', data.addEtablissement);
+   app.post('/data/cuisine', data.addCuisine);
+   app.post('/data/ambiance', data.addAmbiance);
+   app.post('/data/parking', data.addParking);
+   app.post('/data/reservation', data.addGeneral);
 
 }
