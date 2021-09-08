@@ -86,7 +86,7 @@ exports.PrintBons = (req, res) => {
 
         include: [{
             model: BookWaitSeat, as: "bookwaitseat",
-            where: { ids: BwsId },
+            where: { random: BwsId },
             required: true,
         }],
         raw: true, // <----- HERE
@@ -102,6 +102,7 @@ exports.PrintBons = (req, res) => {
             data: data,
             path: "C:\\Users\\Administrateur\\Downloads\\Tawelti-BackEnd-master\\Tawelti-BackEnd-master" + '/Bon_pdf/' + "_" + data.id + "_" + data.bookwaitseat.id + ".pdf",
             type: "",
+            url: "http://10.0.2.2:3000/invoice/" + data.BwsId,
         };
 
         if (data) {
@@ -114,8 +115,6 @@ exports.PrintBons = (req, res) => {
                     res.setHeader('Content-Type', 'application/pdf');
                     res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
                     file.pipe(res);
-                    // let downloadUrl = "http://10.0.2.2:3000/file/" + data.bookwaitseat.ids,
-
                 })
                 .catch((error) => {
                     console.error(error);

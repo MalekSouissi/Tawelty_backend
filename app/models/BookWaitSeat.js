@@ -29,6 +29,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
 
         },
+        random: {
+            type: Sequelize.STRING,
+
+        },
 
         etat: {
             type: Sequelize.INTEGER,

@@ -162,7 +162,7 @@ module.exports = function (app) {
    //invoice
    app.post('/invoice/create', invoice.CreateBon);
    app.get('/invoice/:id', invoice.Bonwithclient);
-   app.get('/PrintInvoice/:id', invoice.PrintBons);
+   app.get('/PrintInvoice/:id' + '.pdf', invoice.PrintBons);
 
    //turnover
    app.post('/turnvoer/createTurnover', turnover.CreateTurnover);
