@@ -61,7 +61,7 @@ exports.uploadMultipleFiles = async (req, res) => {
                 status: "ok",
                 filename: file.originalname,
                 message: "Upload Successfully!",
-                downloadUrl: "http://localhost:3000/Eventfile/" + uploadfile.dataValues.id,
+                downloadUrl: "http://37.187.198.241:3000/Eventfile/" + uploadfile.dataValues.id,
                 EvenementId: req.body.EvenementId,
             }
 
@@ -86,7 +86,7 @@ exports.listAllFiles = (req, res) => {
                 id: files[i].id,
                 filename: files[i].name,
                 EvenementId: files[i].EvenementId,
-                url: "http://10.0.2.2:3000/Eventfile/" + files[i].dataValues.id
+                url: "http://37.187.198.241:3000/Eventfile/" + files[i].dataValues.id
             })
         }
 
