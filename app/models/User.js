@@ -1,7 +1,14 @@
 module.exports = (sequelize, Sequelize) => {
 	const User = sequelize.define('User', {
  
-     
+    googleId: {
+      type: Sequelize.STRING
+    },
+  
+    facebookId: {
+      type: Sequelize.STRING,
+    },
+    
 first_name:{
     type: Sequelize.STRING,
 },

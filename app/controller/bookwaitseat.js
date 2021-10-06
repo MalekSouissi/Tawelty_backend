@@ -80,6 +80,7 @@ exports.CreateBookwaitseatTRUE = (req, res) => {
         cancResv: req.body[0].cancResv,
         UserId: req.body[0].UserId,
         random: req.body[0].random,
+        other:req.body[0].other
     }]
     console.log("book", book)
     BookWait.bulkCreate(book)

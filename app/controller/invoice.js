@@ -102,7 +102,7 @@ exports.PrintBons = (req, res) => {
             data: data,
             path: "C:\\Users\\Administrateur\\Downloads\\Tawelti-BackEnd-master\\Tawelti-BackEnd-master" + '/Bon_pdf/' + "_" + data.id + "_" + data.bookwaitseat.id + ".pdf",
             type: "",
-            url: "http://37.187.198.241:3000/invoice/" + data.BwsId,
+            url: "http://localhost:3000/invoice/" + data.BwsId,
         };
 
         if (data) {

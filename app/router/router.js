@@ -4,11 +4,15 @@ const cors = require('cors');
 const express = require('express');
 const { CreateTurnover } = require('../controller/turnover.js');
 const app = express();
+const passport = require('passport')
+const passportConf = require('../config/passport.js')
 
 module.exports = function (app) {
 
    app.use(cors());
    app.options('*', cors());
+   app.use(passport.initialize());
+app.use(passport.session());
    const auth = require('../controller/authentification.js');
    const restaurant = require('../controller/restaurant.js');
    const user = require('../controller/user.js');
@@ -152,6 +156,13 @@ module.exports = function (app) {
    app.post('/users/login', auth.login);
    app.post('/users/register', auth.register);
    app.get('/users/profile', auth.profile);
+app.post("/forgetPassword/:mail",auth.updatePassword);
+    app.post("/api/auth/check", auth.checkUser);
+//app.post('/oauth/google', auth.googleOAuth);
+app.route('/oauth/google')
+  .post(passport.authenticate('googleToken', { session: false }), auth.googleOAuth);
+app.route('/oauth/facebook')
+  .post(passport.authenticate('facebookToken', { session: false }), auth.facebookOAuth);
 
    app.get('/users/:id', user.findOne);
    app.put('/users/update/:id', user.update);

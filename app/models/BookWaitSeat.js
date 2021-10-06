@@ -33,6 +33,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
 
         },
+        other: {
+            type: Sequelize.STRING,
+
+        },
 
         etat: {
             type: Sequelize.INTEGER,
