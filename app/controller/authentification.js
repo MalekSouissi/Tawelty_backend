@@ -64,7 +64,7 @@ exports.register = (req, res) => {
             expiresIn:1440
         }
         )
-    res.json({token: token})
+    res.json( {token: token,user})
             })
             .catch(err => {
                 res.send('error:'+err)
