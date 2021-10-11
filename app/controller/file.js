@@ -61,7 +61,7 @@ exports.uploadMultipleFiles = async (req, res) => {
                 status: "ok",
                 filename: file.originalname,
                 message: "Upload Successfully!",
-                downloadUrl: "http://10.0.2.2:3000/file/" + uploadfile.dataValues.id,
+                downloadUrl: "http://37.187.198.241:3000/file/" + uploadfile.dataValues.id,
                 RestaurantId: req.body.RestaurantId,
             }
 
@@ -85,7 +85,7 @@ exports.listAllFiles = (req, res) => {
                 id: files[i].id,
                 filename: files[i].name,
                 RestaurantId: files[i].RestaurantId,
-                url: "http://10.0.2.2:3000/file/" + files[i].dataValues.id
+                url: "http://37.187.198.241:3000/file/" + files[i].dataValues.id
             })
         }
 
